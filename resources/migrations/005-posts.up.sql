@@ -2,15 +2,17 @@ CREATE TABLE posts (
   id SERIAL PRIMARY KEY,
   message VARCHAR NOT NULL,
   thread INTEGER NOT NULL,
-  posted_by INTEGER NOT NULL,
+  posted_by INTEGER,
   created_at TIMESTAMP NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
   CONSTRAINT fk_thread
     FOREIGN KEY (thread)
-    REFERENCES threads (id),
+    REFERENCES threads (id)
+    ON DELETE CASCADE,
   CONSTRAINT fk_posted_by
     FOREIGN KEY (posted_by)
     REFERENCES users (id)
+    ON DELETE SET NULL
 );
 
 INSERT INTO posts (message, thread, posted_by) VALUES (
