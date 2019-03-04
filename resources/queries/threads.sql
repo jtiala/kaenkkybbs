@@ -1,17 +1,17 @@
--- name: create-thread
+-- name: create-thread-query<!
 INSERT INTO threads (title, started_by) VALUES (
   :title,
   :started_by,
 );
 
--- name: get-thread
+-- name: get-thread-query
 SELECT id, title, started_by, created_at, updated_at FROM threads WHERE id = :id;
 
--- name: get-threads
+-- name: get-threads-query
 SELECT id, title, started_by, created_at, updated_at FROM threads ORDER BY created_at DESC;
 
--- name: update-thread
+-- name: update-thread-query!
 UPDATE threads SET title = :title, updated_at = NOW() WHERE id = :id;
 
--- name: delete-thread
+-- name: delete-thread-query!
 DELETE FROM threads WHERE id = :id;

@@ -8,8 +8,8 @@
           data '({:id 1, :title "Clojure thread"}
                  {:id 2, :title "ClojureScript thread"}
                  {:id 3, :title "JavaScript thread"})]
-      (with-redefs [all-posts (fn [db] data)
-                    post-by-id (fn [db params] (filter #(= (:id %) (:id params)) data))]
+      (with-redefs [get-posts-query (fn [db] data)
+                    get-post-query (fn [db params] (filter #(= (:id %) (:id params)) data))]
         (is (= (get-post db) {:result data})
             "Should return all posts when no id is given")
         (is (= (get-post db :all) {:result data})

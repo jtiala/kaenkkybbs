@@ -10,11 +10,11 @@
   ([db] (get-post db :all))
   ([db id]
    (let [result (if (= :all id)
-                  (all-posts db)
-                  (post-by-id db {:id id}))]
+                  (get-posts-query db)
+                  (get-post-query db {:id id}))]
      {:result result})))
 
-(defrecord Post []
+(defrecord Posts []
   component/Lifecycle
   (start [{server :http-server
            db :db

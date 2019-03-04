@@ -11,7 +11,7 @@
   (reaction (count (:posts @app-state))))
 
 (defn toggle-posts []
-  (swap! app-state #(assoc % :show-posts (not (:show-posts @app-state)))))
+  (swap! app-state #(update % :show-posts not)))
 
 (defn report-ajax-error [error]
   (js/window.alert "Ajax error! " error))
@@ -39,13 +39,13 @@
    [:h1 (:title @app-state)]])
 
 (defn toggle-posts-button []
-  [:button {:on-click #((toggle-posts))}
+  [:button {:on-click (fn [_] (toggle-posts))}
    (if (:show-posts @app-state) "Hide posts" "Show posts")])
 
 (defn posts []
   [:div {:class "posts"}
    [:h2 (str "Posts: " @get-post-count)]
-   (toggle-posts-button)
+   [toggle-posts-button]
    (if (:show-posts @app-state)
      [:ul
       (for [post (:posts @app-state)]
@@ -55,8 +55,8 @@
 
 (defn layout []
   [:div {:id "layout"}
-   (header)
-   (posts)])
+   [header]
+   [posts]])
 
 (defn mount [el]
   (reagent/render-component [layout] el)
