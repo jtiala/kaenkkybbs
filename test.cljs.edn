@@ -1,0 +1,3 @@
+^{:ring-server-options {:port 9501}
+  :open-url "http://[[server-hostname]]:[[server-port]]/test.html"}
+{:main forum.test-runner}

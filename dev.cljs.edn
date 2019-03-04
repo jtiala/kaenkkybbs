@@ -1,0 +1,5 @@
+^{:watch-dirs ["src/cljs" "test/cljs"]
+  :css-dirs ["resources/public/css"]
+  :auto-testing true
+  :open-url false}
+{:main forum.core}
