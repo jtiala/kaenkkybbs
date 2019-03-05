@@ -14,9 +14,9 @@
 
 (defn create-system
   "Constructs a system map."
-  []
+  [dev-mode?]
   (component/system-map
-   :db (db/->Db (:db config))
+   :db (db/->Db (:db config) dev-mode?)
    :http-server (server/create-server (:http-server config))
    :users (component/using
            (users/->Users)

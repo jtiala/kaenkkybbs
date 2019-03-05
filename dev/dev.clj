@@ -17,12 +17,12 @@
    [clojure.set :as set]
    [clojure.string :as string]
    [clojure.test :as test]
-   [clojure.tools.namespace.repl :refer [refresh refresh-all]]
+   [clojure.tools.namespace.repl :as ns-repl :refer [refresh refresh-all]]
    [com.stuartsierra.component :as component]
    [com.stuartsierra.component.repl :refer [reset set-init start stop system]]
    [forum.migrations :as migrations :refer [migrate rollback]]
    [forum.system :refer [create-system]]))
 
-(clojure.tools.namespace.repl/set-refresh-dirs "dev" "src" "test")
+(ns-repl/set-refresh-dirs "dev" "src" "test")
 
-(set-init (fn [_] (create-system)))
+(set-init (fn [_] (create-system true)))

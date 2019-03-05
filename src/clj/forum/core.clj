@@ -8,4 +8,4 @@
 (defn -main [& args]
   "Run migrations, create and start an instance of the system."
   (migrations/migrate)
-  (defonce system (component/start (create-system))))
+  (defonce system (component/start (create-system false))))
