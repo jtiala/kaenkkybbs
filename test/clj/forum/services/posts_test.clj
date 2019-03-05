@@ -2,19 +2,20 @@
   (:require [clojure.test :refer :all]
             [forum.services.posts :refer :all]))
 
+(def mock '({:id 1 :message "Post 1" :thread 1}
+            {:id 2 :message "Post 2" :thread 2}
+            {:id 3 :message "Post 3" :thread 1}))
+
+(deftest get-posts-test
+  (testing "get-posts returns correct set of posts"
+    (with-redefs [get-posts-query (fn [db] mock)]
+      (is (= (get-posts nil) {:result mock})
+          "Should return all posts"))))
+
 (deftest get-post-test
-  (testing "get-post returns correct set of posts"
-    (let [db nil
-          data '({:id 1, :title "Clojure thread"}
-                 {:id 2, :title "ClojureScript thread"}
-                 {:id 3, :title "JavaScript thread"})]
-      (with-redefs [get-posts-query (fn [db] data)
-                    get-post-query (fn [db params] (filter #(= (:id %) (:id params)) data))]
-        (is (= (get-post db) {:result data})
-            "Should return all posts when no id is given")
-        (is (= (get-post db :all) {:result data})
-            "Should return all post when :all is given as id")
-        (is (= (get-post db 2) {:result '({:id 2, :title "ClojureScript thread"})})
-            "Should return correct post when id is given and corresponding post exists")
-        (is (= (get-post db 4) {:result '()})
-            "Should return an empty list when id is given but no corresponding post exists")))))
+  (testing "get-post returns correct post"
+    (with-redefs [get-post-query (fn [db params] (filter #(= (:id %) (:id params)) mock))]
+      (is (= (get-post nil 2) {:result (list (nth mock 1))})
+          "Should return correct post when id is given and corresponding post exists")
+      (is (= (get-post nil 99) {:result '()})
+          "Should return an empty list when id is given but no corresponding post exists"))))
