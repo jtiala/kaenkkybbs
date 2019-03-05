@@ -5,11 +5,11 @@ INSERT INTO posts (message, thread, posted_by) VALUES (
   :posted_by
 );
 
+-- name: get-posts-query
+SELECT message, thread, posted_by, created_at, updated_at FROM posts ORDER BY created_at ASC;
+
 -- name: get-post-query
 SELECT message, thread, posted_by, created_at, updated_at FROM posts WHERE id = :id;
-
--- name: get-posts-query
-SELECT message, thread, posted_by, created_at, updated_at ORDER BY created_at ASC;
 
 -- name: get-posts-by-thread-query
 SELECT message, thread, posted_by, created_at, updated_at FROM posts WHERE thread = :thread ORDER BY created_at ASC;

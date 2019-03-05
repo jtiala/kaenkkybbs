@@ -6,11 +6,11 @@ INSERT INTO users (email, username, role) VALUES (
   :role
 );
 
--- name: get-user-query
-SELECT id, email, username, role FROM users WHERE id=:id;
-
 -- name: get-users-query
 SELECT id, email, username, role FROM users ORDER BY id;
+
+-- name: get-user-query
+SELECT id, email, username, role FROM users WHERE id=:id;
 
 -- name: update-user-query!
 UPDATE users SET email = :email, username = :username, role = :role, updated_at = NOW() WHERE id = :id;
