@@ -42,23 +42,22 @@ header {
 
 header h1 {
   color: white;
-  text-transform: uppercase;
   font-size: 2rem;
   font-weight: 700;
 }
 
-.posts {
-  text-align: center;
+.threads {
+  margin: 10px;
 }
 
-.posts h2 {
+.threads h2 {
   color: black;
   text-transform: uppercase;
   font-size: 1.3rem;
   font-weight: 700;
 }
 
-.posts ul {
+.threads ul {
   margin: 10px;
   padding: 0;
   list-style: none;

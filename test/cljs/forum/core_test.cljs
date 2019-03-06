@@ -1,6 +1,5 @@
 (ns forum.core-test
-  (:require [cljs.test :refer-macros [deftest is testing use-fixtures]]
-            [forum.core :refer [toggle-posts-button]]))
+  (:require [cljs.test :refer-macros [deftest is testing]]))
 
 (deftest equality-test
   (testing "If this fails, abandon ship"
