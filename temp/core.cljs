@@ -16,13 +16,13 @@
 
 (defn asd []
   [:div {:id "layout"}
-  ;  [header/render]
-  ;  [posts/render]]
+  ;  [header/component]
+  ;  [posts/component]]
    [:h1 "ffff"]])
 
 
 (defn mount [el]
-  (reagent/render-component [asd] el)
+  (reagent/component-component [asd] el)
   ; (initial-populate-state))
   )
 

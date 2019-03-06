@@ -18,7 +18,7 @@
   [:button {:on-click (fn [_] (actions/load-threads))}
    "Load threads"])
 
-(defn render []
+(defn component []
   [:div {:class "threads"}
    [:h2 (str "Threads (" @actions/get-thread-count ")")]
    [toggle-button]

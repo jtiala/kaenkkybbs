@@ -4,7 +4,7 @@
             [reagent.core :as reagent :refer [atom]]))
 
 (defn mount [el]
-  (reagent/render-component [layout/render] el))
+  (reagent/render-component [layout/component] el))
 
 (defn get-app-element []
   (gdom/getElement "app"))

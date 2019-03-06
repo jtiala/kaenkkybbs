@@ -2,7 +2,7 @@
   (:require [forum.components.header :as header]
             [forum.components.thread-list :as thread-list]))
 
-(defn render []
+(defn component []
   [:div {:id "layout"}
-   [header/render]
-   [thread-list/render]])
+   [header/component]
+   [thread-list/component]])

@@ -6,7 +6,7 @@
   [:button {:on-click (fn [_] (actions/toggle-posts))}
    (if state/show-posts "Hide posts" "Show posts")])
 
-(defn render []
+(defn component []
   [:div {:class "posts"}
    [:h2 (str "Posts: " (actions/get-post-count))]
    [toggle-posts-button]
