@@ -1,6 +1,5 @@
-(ns forum.components.header
-  (:require [forum.state :as state]))
+(ns forum.components.header)
 
 (defn component []
   [:header
-   [:h1 @state/title]])
+   [:h1 "KaenkkyBBS"]])

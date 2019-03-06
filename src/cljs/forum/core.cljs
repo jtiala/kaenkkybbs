@@ -1,10 +1,16 @@
 (ns ^:figwheel-hooks forum.core
   (:require [forum.components.layout :as layout]
+            [forum.actions :as actions]
             [goog.dom :as gdom]
             [reagent.core :as reagent :refer [atom]]))
 
+(defn initial-populate-state
+  []
+  (actions/load-threads))
+
 (defn mount [el]
-  (reagent/render-component [layout/component] el))
+  (reagent/render-component [layout/component] el)
+  (initial-populate-state))
 
 (defn get-app-element []
   (gdom/getElement "app"))

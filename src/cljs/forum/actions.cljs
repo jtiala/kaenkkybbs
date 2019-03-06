@@ -16,4 +16,4 @@
   (swap! state/threads conj {:id (inc @get-thread-count) :title "test"}))
 
 (defn load-threads []
-  (api/api-get "/threads" {} state/threads true))
+  (api/api-get "/threads" {} state/threads false))

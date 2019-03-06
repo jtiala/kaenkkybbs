@@ -14,17 +14,12 @@
   [:button {:on-click (fn [_] (actions/add-thread))}
    "Add a thread"])
 
-(defn load-button []
-  [:button {:on-click (fn [_] (actions/load-threads))}
-   "Load threads"])
-
 (defn component []
   [:div {:class "threads"}
    [:h2 (str "Threads (" @actions/get-thread-count ")")]
    [toggle-button]
    [clear-button]
    [add-button]
-   [load-button]
    (if @state/show-threads
      [:ul
       (for [thread @state/threads]
