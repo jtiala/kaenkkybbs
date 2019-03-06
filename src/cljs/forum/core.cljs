@@ -1,6 +1,7 @@
 (ns ^:figwheel-hooks forum.core
   (:require [forum.components.layout :as layout]
             [forum.actions :as actions]
+            [forum.routing :as routing]
             [goog.dom :as gdom]
             [reagent.core :as reagent :refer [atom]]))
 
@@ -9,6 +10,7 @@
   (actions/load-threads))
 
 (defn mount [el]
+  (routing/router)
   (reagent/render-component [layout/component] el)
   (initial-populate-state))
 

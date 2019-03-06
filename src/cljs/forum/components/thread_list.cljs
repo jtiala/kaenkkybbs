@@ -25,4 +25,4 @@
       (for [thread @state/threads]
         ^{:key (str "thread-" (:id thread))}
         [:li
-         [:a {:href "/"} (str (:id thread) ": " (:title thread))]])])])
+         [:a {:href (str "#/threads/" (:id thread))} (str (:id thread) ": " (:title thread))]])])])

@@ -20,7 +20,8 @@
                  [com.cognitect/transit-clj "0.8.313"]
                  [org.clojure/clojurescript "1.10.520"]
                  [reagent "0.8.1"]
-                 [cljs-ajax "0.8.0"]]
+                 [cljs-ajax "0.8.0"]
+                 [clj-commons/secretary "1.2.4"]]
 
   :source-paths ["src/clj" "src/cljc" "src/cljs"]
 

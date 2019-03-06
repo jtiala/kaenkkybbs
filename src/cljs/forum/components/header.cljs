@@ -2,4 +2,5 @@
 
 (defn component []
   [:header
-   [:h1 "KaenkkyBBS"]])
+   [:h1
+    [:a {:href "#"} "KaenkkyBBS"]]])
