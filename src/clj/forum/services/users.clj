@@ -18,7 +18,7 @@
   "Get a user from the database."
   [db id]
   (let [result (get-user-query db {:id id})]
-    {:result result}))
+    {:result (first result)}))
 
 (defrecord Users []
   component/Lifecycle

@@ -18,7 +18,7 @@
   "Get a post from the database."
   [db id]
   (let [result (get-post-query db {:id id})]
-    {:result result}))
+    {:result (first result)}))
 
 (defrecord Posts []
   component/Lifecycle

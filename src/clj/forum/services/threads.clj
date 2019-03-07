@@ -7,6 +7,7 @@
             [forum.http-server :refer [publish-service]]))
 
 (defqueries "queries/threads.sql")
+(defqueries "queries/posts.sql")
 
 (defn get-threads
   "Get a list of threads from the database."
@@ -15,10 +16,11 @@
     {:result result}))
 
 (defn get-thread
-  "Get a thread from the database."
+  "Get a thread and its posts from the database."
   [db id]
-  (let [result (get-thread-query db {:id id})]
-    {:result result}))
+  (let [thread (get-thread-query db {:id id})
+        posts (get-posts-by-thread-query db {:thread id})]
+    {:result (assoc (first thread) :posts posts)}))
 
 (defrecord Threads []
   component/Lifecycle
