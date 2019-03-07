@@ -5,4 +5,6 @@
 
 (defonce threads (atom []))
 
+(defonce current-thread (atom nil))
+
 (defonce show-threads (atom true))

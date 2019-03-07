@@ -1,6 +1,6 @@
 (ns forum.components.header)
 
 (defn component []
-  [:header
+  [:header {:id "header"}
    [:h1
-    [:a {:href "#"} "KaenkkyBBS"]]])
+    [:a {:href "#"} "🍕 KaenkkyBBS"]]])

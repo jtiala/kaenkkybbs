@@ -1,5 +1,6 @@
 (ns forum.routing
   (:require [forum.state :as state]
+            [forum.actions :as actions]
             [forum.components.home :as home]
             [forum.components.thread :as thread]
             [secretary.core :as secretary]
@@ -27,7 +28,8 @@
     (change-route :home))
 
   (defroute thread-path "/threads/:id" [id]
-    (change-route :thread))
+    (change-route :thread)
+    (actions/load-thread id))
 
   (hook-browser-navigation!))
 

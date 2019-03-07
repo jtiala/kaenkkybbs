@@ -3,6 +3,7 @@
             [forum.routing :as routing]))
 
 (defn component []
-  [:div {:id "layout"}
+  [:section {:id "layout"}
    [header/component]
-   [routing/current-route]])
+   [:section {:id "main"}
+    [routing/current-route]]])

@@ -5,17 +5,15 @@
 (defn report-ajax-error [error]
   (js/console.error error))
 
-(defn- create-params [params state append?]
+(defn- create-params [params state handler]
   {:params  params
    :handler (fn [response]
-              (if append?
-                (swap! state #(concat % (:result response)))
-                (swap! state #(:result response))))
+              (swap! state #(handler % (:result response))))
    :keyword? true
    :error-handler report-ajax-error})
 
-(defn api-post [path params state append?]
-  (POST (str "/api" path) (create-params params state append?)))
+(defn api-post [path params state handler]
+  (POST (str "/api" path) (create-params params state handler)))
 
-(defn api-get [path params state append?]
-  (GET (str "/api" path) (create-params params state append?)))
+(defn api-get [path params state handler]
+  (GET (str "/api" path) (create-params params state handler)))

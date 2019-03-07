@@ -3,6 +3,34 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+h1 {
+  color: black;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+h2 {
+  color: black;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+p  {
+  font-size: 1.1rem;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
 a {
   color: #dc1e32;
   text-decoration: none;
@@ -34,36 +62,26 @@ button:hover {
   justify-content: center;
 }
 
-header {
+#header {
   flex-grow: 1;
-  text-align: center;
   background-color: #dc1e32;
+  padding: 10px;
 }
 
-header h1 {
-  color: white;
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-header h1 a,
-header h1 a:hover {
-  color: white;
-}
-
-.threads {
-  margin: 10px;
-}
-
-.threads h2 {
-  color: black;
-  text-transform: uppercase;
-  font-size: 1.3rem;
-  font-weight: 700;
-}
-
-.threads ul {
-  margin: 10px;
+#header h1,
+#header h1 a,
+#header h1 a:hover {
+  margin: 0;
   padding: 0;
-  list-style: none;
+  color: white;
+}
+
+#main {
+  margin: 10px;
+}
+
+.post {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: linen;
 }

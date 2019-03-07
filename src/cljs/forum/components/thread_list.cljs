@@ -15,7 +15,7 @@
    "Add a thread"])
 
 (defn component []
-  [:div {:class "threads"}
+  [:section {:class "thread-list"}
    [:h2 (str "Threads (" @actions/get-thread-count ")")]
    [toggle-button]
    [clear-button]
