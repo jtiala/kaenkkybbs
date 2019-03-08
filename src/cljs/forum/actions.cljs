@@ -7,28 +7,30 @@
 (def get-thread-count
   (reaction (count @state/threads)))
 
-(defn toggle-show-threads []
-  (swap! state/show-threads not))
-
-(defn clear-threads []
-  (reset! state/threads []))
-
-(defn add-thread []
-  (swap! state/threads conj {:id (inc @get-thread-count) :title "test"}))
-
-(defn load-threads []
-  (api/api-get "/threads" {} state/threads (fn [_ result]
-                                             result)))
-
-(defn load-thread [id]
-  (api/api-get (str "/threads/" id) {} state/threads (fn [previous-state result]
-                                                       (conj (filter (fn [thread]
-                                                                       (not= (:id thread) (:id result)))
-                                                                     previous-state)
-                                                             result)))
+(defn set-current-thread [id]
+  (println (str "Setting current thread: " id))
   (reset! state/current-thread (util/parse-int id)))
 
-(defn get-current-thread []
-  (first (filter (fn [thread]
-                   (not= (:id thread) @state/current-thread))
-                 @state/threads)))
+(def get-current-thread
+  (reaction
+    (first
+      (filter (fn [thread]
+                (= (:id thread) @state/current-thread))
+              @state/threads))))
+
+(defn load-threads []
+  (println "Loading all threads")
+  (api/api-get
+    "/threads" {} state/threads
+    (fn [_ result]
+      result)))
+
+(defn load-thread [id]
+  (println (str "Loading thread: " id))
+  (api/api-get
+    (str "/threads/" id) {} state/threads
+    (fn [previous-state result]
+      (map
+        #(if (= (:id %) (:id result)) result %)
+        previous-state))))
+

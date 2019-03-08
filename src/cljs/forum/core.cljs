@@ -5,14 +5,9 @@
             [goog.dom :as gdom]
             [reagent.core :as reagent :refer [atom]]))
 
-(defn initial-populate-state
-  []
-  (actions/load-threads))
-
 (defn mount [el]
   (routing/router)
-  (reagent/render-component [layout/component] el)
-  (initial-populate-state))
+  (reagent/render-component [layout/component] el))
 
 (defn get-app-element []
   (gdom/getElement "app"))

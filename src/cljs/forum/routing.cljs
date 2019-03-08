@@ -28,8 +28,8 @@
     (change-route :home))
 
   (defroute thread-path "/threads/:id" [id]
-    (change-route :thread)
-    (actions/load-thread id))
+    (actions/set-current-thread id)
+    (change-route :thread))
 
   (hook-browser-navigation!))
 
