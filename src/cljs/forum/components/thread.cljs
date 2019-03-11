@@ -4,19 +4,18 @@
             [forum.actions :as actions]
             [forum.components.post :as post]))
 
-(defn component-did-mount []
-  (actions/load-thread @state/current-thread))
+(defn component-did-mount [this]
+  (actions/load-thread (-> this reagent/argv second deref (get-in [:thread :id]))))
 
-(defn render []
-  (let [thread @actions/get-current-thread]
-    (println thread)
+(defn render [state]
+  (let [{:keys [title posts]} (:thread @state)]
     [:section {:class "thread"}
-     [:h2 (:title thread)]
-     (for [p (:posts thread)]
+     [:h2 title]
+     (for [p posts]
        ^{:key (str "post-" (:id p))}
        [post/component p])]))
 
-(defn component []
+(defn component [state]
   (reagent/create-class {:reagent-render render
                          :component-did-mount component-did-mount}))
 

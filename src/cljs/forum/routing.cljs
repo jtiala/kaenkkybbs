@@ -19,7 +19,7 @@
 
 (defn change-route [route]
   (println (str "Navigating to " route))
-  (reset! state/route route))
+  (swap! state/state assoc :route route))
 
 (defn router []
   (secretary/set-config! :prefix "#")
@@ -33,8 +33,10 @@
 
   (hook-browser-navigation!))
 
-(defmulti current-route #(deref state/route))
-(defmethod current-route :home []
-  [home/component])
-(defmethod current-route :thread []
-  [thread/component])
+(defmulti current-route
+          (fn [state]
+            (:route @state)))
+(defmethod current-route :home [state]
+  [home/component state])
+(defmethod current-route :thread [state]
+  [thread/component state])

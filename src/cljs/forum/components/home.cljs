@@ -1,6 +1,6 @@
 (ns forum.components.home
   (:require [forum.components.thread-list :as thread-list]))
 
-(defn component []
+(defn component [state]
   [:section {:class "home"}
-   [thread-list/component]])
+   [thread-list/component @state]])
