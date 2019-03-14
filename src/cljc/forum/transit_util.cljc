@@ -18,10 +18,9 @@
      :cljs
      (t/write (t/writer :json write-options) data)))
 
-
 (defn transit->clj [data]
   #?(:clj
-     (with-open [in (java.io.ByteArrayInputStream. (.toByteArray data))]
+     (with-open [in (java.io.ByteArrayInputStream. (.bytes data))]
        (t/read (t/reader in :json read-options)))
 
      :cljs
