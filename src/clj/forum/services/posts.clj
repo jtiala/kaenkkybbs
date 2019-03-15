@@ -24,7 +24,7 @@
 (defn create-post
   "Save a new post to the database."
   [db message thread posted_by]
-  (let [result (create-post-query<! db {:message message :thread thread :posted_by posted_by})]
+  (let [result (create-post-query<! db {:message message :thread thread :posted_by (if (= posted_by 0) nil posted_by)})]
     {:result result}))
 
 (defrecord Posts []
