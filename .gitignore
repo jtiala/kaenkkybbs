@@ -3,6 +3,7 @@ classes
 checkouts
 lib
 out
+nashorn_code_cache
 profiles.clj
 pom.xml
 pom.xml.asc
