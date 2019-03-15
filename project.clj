@@ -40,5 +40,4 @@
 
   :clean-targets ^{:protect false} ["resources/public/cljs-out" "target"]
 
-  :main forum.core
-  :aot [forum.core])
+  :main forum.core)
