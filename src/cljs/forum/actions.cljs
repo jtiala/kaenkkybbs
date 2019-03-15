@@ -23,3 +23,8 @@
     (fn [previous-state result]
       (assoc previous-state :thread result))))
 
+(defn create-post [message thread posted_by]
+  (api/api-post
+    (str "/posts") {:message message :thread thread :posted_by posted_by} state/state
+    (fn [previous-state result]
+      (assoc-in previous-state [:thread :posts] (conj (get-in previous-state [:thread :posts]) result)))))
