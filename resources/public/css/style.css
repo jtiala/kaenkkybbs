@@ -16,6 +16,12 @@ h2 {
   font-weight: 700;
 }
 
+h3 {
+  color: black;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
 p  {
   font-size: 1.1rem;
 }
@@ -41,7 +47,6 @@ a:hover {
 }
 
 button {
-  margin: 10px;
   padding: 10px;
   background-color: #dc1e32;
   border-width: 0;
@@ -84,4 +89,35 @@ button:hover {
   margin-bottom: 10px;
   padding: 10px;
   background-color: linen;
+}
+
+.new-post {
+  background: tomato;
+  padding: 10px;
+  max-width: 400px;
+}
+
+.new-post h3 {
+  color: white;
+  margin: 0 0 10px 0;
+}
+
+.new-post form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-post label {
+  margin-bottom: 5px;
+  color: white;
+}
+
+.new-post select {
+  margin-bottom: 10px;
+}
+
+.new-post textarea {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  height: 60px;
 }
