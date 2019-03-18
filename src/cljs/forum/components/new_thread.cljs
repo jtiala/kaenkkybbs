@@ -1,23 +1,29 @@
-(ns forum.components.new-post
+(ns forum.components.new_thread
   (:require [forum.actions :as actions]
             [forum.util :as util]
             [clojure.string :refer [trim]]
             [reagent.core :as reagent :refer [atom]]))
 
 (defn user-selected? [id component-state]
-  (= id (:posted-by @component-state)))
+  (= id (:started-by @component-state)))
 
 (defn create-user-option [[id name] component-state]
   [:option {:value id :selected (user-selected? id component-state)} name])
 
-(defn posted-by-select [component-state]
-  [:select {:id "posted_by"
-            :name "posted_by"
-            :on-change #(swap! component-state assoc :posted-by (-> % .-target .-value util/parse-int))}
+(defn started-by-select [component-state]
+  [:select {:id "started_by"
+            :name "started_by"
+            :on-change #(swap! component-state assoc :started-by (-> % .-target .-value util/parse-int))}
    (create-user-option [0 "<Anonymous>"] component-state)
    (create-user-option [1 "Kaenkkykeisari"] component-state)
    (create-user-option [2 "ananas666"] component-state)
    (create-user-option [3 "PizzaKuski"] component-state)])
+
+(defn title-input [component-state]
+  [:input {:id "title"
+           :name "title"
+           :on-change #(swap! component-state assoc :title (-> % .-target .-value))
+           }])
 
 (defn message-textarea [component-state]
   [:textarea {:id "message"
@@ -29,20 +35,22 @@
   [:button {:type "submit"
             :on-click (fn [event]
                         (.preventDefault event)
-                        (actions/create-post (trim (:message @component-state)) (:thread @component-state) (:posted-by @component-state))
-                        (swap! component-state assoc :message "" :posted-by 0))}
+                        (actions/create-thread (trim (:title @component-state)) (:started-by @component-state) (trim (:message @component-state)))
+                        (swap! component-state assoc :title "" :message "" :started-by 0))}
    "Send"])
 
 (defn component [state]
-  (let [component-state (atom {:message ""
-                               :thread (get-in @state [:thread :id])
-                               :posted-by 0})]
+  (let [component-state (atom {:title ""
+                               :started-by 0
+                               :message ""})]
     (fn []
-      [:div {:class "new-post"}
-       [:h3 "Add new post"]
+      [:div {:class "new-thread"}
+       [:h3 "Start a new thread"]
        [:form
-        [:label {:for "posted_by"} "Send as (tmp)"]
-        [posted-by-select component-state]
+        [:label {:for "started_by"} "Send as (tmp)"]
+        [started-by-select component-state]
+        [:label {:for "title"} "Title"]
+        [title-input component-state]
         [:label {:for "message"} "Your message"]
         [message-textarea component-state]
         [submit-button component-state]]])))

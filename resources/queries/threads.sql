@@ -1,7 +1,7 @@
 -- name: create-thread-query<!
 INSERT INTO threads (title, started_by) VALUES (
   :title,
-  :started_by,
+  :started_by
 );
 
 -- name: get-threads-query

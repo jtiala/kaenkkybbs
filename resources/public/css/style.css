@@ -85,39 +85,54 @@ button:hover {
   margin: 10px;
 }
 
+.thread-list {
+  margin-bottom: 20px;
+}
+
 .post {
   margin-bottom: 10px;
   padding: 10px;
   background-color: linen;
 }
 
-.new-post {
+.new-post,
+.new-thread {
   background: tomato;
   padding: 10px;
   max-width: 400px;
 }
 
-.new-post h3 {
+.new-post h3,
+.new-thread h3 {
   color: white;
   margin: 0 0 10px 0;
 }
 
-.new-post form {
+.new-post form,
+.new-thread form {
   display: flex;
   flex-direction: column;
 }
 
-.new-post label {
+.new-post label,
+.new-thread label {
   margin-bottom: 5px;
   color: white;
 }
 
-.new-post select {
+.new-post select,
+.new-thread select {
   margin-bottom: 10px;
 }
 
-.new-post textarea {
+.new-post textarea,
+.new-thread textarea {
   margin-bottom: 10px;
   font-size: 1.1rem;
   height: 60px;
+}
+
+.new-thread input {
+  margin-bottom: 10px;
+  font-size: 1.1rem;
 }

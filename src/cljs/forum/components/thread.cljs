@@ -3,7 +3,7 @@
             [forum.state :as state]
             [forum.actions :as actions]
             [forum.components.post :as post]
-            [forum.components.new_post :as new_post]))
+            [forum.components.new-post :as new-post]))
 
 (defn component-did-mount [this]
   (actions/load-thread (-> this reagent/argv second deref (get-in [:thread :id]))))
@@ -15,7 +15,7 @@
      (for [p posts]
        ^{:key (str "post-" (:id p))}
        [post/component p])
-     [new_post/component state]]))
+     [new-post/component state]]))
 
 (defn component [state]
   (reagent/create-class {:reagent-render render

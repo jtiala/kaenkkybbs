@@ -23,8 +23,14 @@
     (fn [previous-state result]
       (assoc previous-state :thread result))))
 
+(defn create-thread [title started_by message]
+  (api/api-post
+    "/threads" {:title title :started_by started_by :message message} state/state
+    (fn [previous-state result]
+      (update-in previous-state [:threads] conj (:thread result)))))
+
 (defn create-post [message thread posted_by]
   (api/api-post
-    (str "/posts") {:message message :thread thread :posted_by posted_by} state/state
+    "/posts" {:message message :thread thread :posted_by posted_by} state/state
     (fn [previous-state result]
-      (assoc-in previous-state [:thread :posts] (conj (get-in previous-state [:thread :posts]) result)))))
+      (update-in previous-state [:thread :posts] conj result))))
