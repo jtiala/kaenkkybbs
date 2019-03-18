@@ -4,15 +4,13 @@
             [clojure.string :refer [trim]]
             [reagent.core :as reagent :refer [atom]]))
 
-(defn user-selected? [id component-state]
-  (= id (:started-by @component-state)))
-
 (defn create-user-option [[id name] component-state]
-  [:option {:value id :selected (user-selected? id component-state)} name])
+  [:option {:value id} name])
 
 (defn started-by-select [component-state]
   [:select {:id "started_by"
             :name "started_by"
+            :value (:started-by @component-state)
             :on-change #(swap! component-state assoc :started-by (-> % .-target .-value util/parse-int))}
    (create-user-option [0 "<Anonymous>"] component-state)
    (create-user-option [1 "Kaenkkykeisari"] component-state)
