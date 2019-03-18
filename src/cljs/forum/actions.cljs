@@ -13,7 +13,6 @@
   (api/api-get
     "/threads" {} state/state
     (fn [old-state threads]
-      (println "OLD STATE: " old-state)
       (assoc old-state :threads threads))))
 
 (defn load-thread [id]
