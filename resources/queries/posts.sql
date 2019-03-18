@@ -6,13 +6,22 @@ INSERT INTO posts (message, thread, posted_by) VALUES (
 );
 
 -- name: get-posts-query
-SELECT id, message, thread, posted_by, created_at, updated_at FROM posts ORDER BY created_at ASC;
+SELECT p.id, p.message, p.thread, p.created_at, p.updated_at, u.id AS user_id, u.username AS user_username, u.role AS user_role
+FROM posts p
+LEFT JOIN users u ON p.posted_by = u.id
+ORDER BY p.created_at ASC;
 
 -- name: get-post-query
-SELECT id, message, thread, posted_by, created_at, updated_at FROM posts WHERE id = :id;
+SELECT p.id, p.message, p.thread, p.created_at, p.updated_at, u.id AS user_id, u.username AS user_username, u.role AS user_role
+FROM posts p
+LEFT JOIN users u ON p.posted_by = u.id
+WHERE p.id = :id;
 
 -- name: get-posts-by-thread-query
-SELECT id, message, thread, posted_by, created_at, updated_at FROM posts WHERE thread = :thread ORDER BY created_at ASC;
+SELECT p.id, p.message, p.thread, p.created_at, p.updated_at, u.id AS user_id, u.username AS user_username, u.role AS user_role
+FROM posts p
+LEFT JOIN users u ON p.posted_by = u.id
+WHERE p.thread = :thread ORDER BY p.created_at ASC;
 
 -- name: update-post-query!
 UPDATE posts SET message = :message, updated_at = NOW() WHERE id = :id;

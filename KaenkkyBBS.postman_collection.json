@@ -56,6 +56,34 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Create thread",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    \"^ \",\n    \"~:title\",\n    \"Testing testing\",\n    \"~:started_by\",\n    1,\n    \"~:message\",\n    \"Test foo bar\"\n]"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/threads",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"threads"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -106,6 +134,34 @@
 									"key": "id",
 									"value": "1"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    \"^ \",\n    \"~:message\",\n    \"Testing testing\",\n    \"~:thread\",\n    1,\n    \"~:posted_by\",\n    1\n]"
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/posts",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"posts"
 							]
 						}
 					},
@@ -170,7 +226,7 @@
 	],
 	"variable": [
 		{
-			"id": "65bdf0f4-39ec-47b7-93d2-6bbd557b9ca1",
+			"id": "96672d47-ae61-44cf-848d-3298c98f2202",
 			"key": "BASE_URL",
 			"value": "localhost:8080/api",
 			"type": "string"

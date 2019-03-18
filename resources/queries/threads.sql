@@ -5,10 +5,16 @@ INSERT INTO threads (title, started_by) VALUES (
 );
 
 -- name: get-threads-query
-SELECT id, title, started_by, created_at, updated_at FROM threads ORDER BY created_at DESC;
+SELECT t.id, t.title, t.created_at, t.updated_at, u.id AS user_id, u.username AS user_username, u.role AS user_role
+FROM threads t
+LEFT JOIN users u ON t.started_by = u.id
+ORDER BY t.created_at DESC;
 
 -- name: get-thread-query
-SELECT id, title, started_by, created_at, updated_at FROM threads WHERE id = :id;
+SELECT t.id, t.title, t.created_at, t.updated_at, u.id AS user_id, u.username AS user_username, u.role AS user_role
+FROM threads t
+LEFT JOIN users u ON t.started_by = u.id
+WHERE t.id = :id;
 
 -- name: update-thread-query!
 UPDATE threads SET title = :title, updated_at = NOW() WHERE id = :id;

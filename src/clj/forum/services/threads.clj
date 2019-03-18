@@ -24,11 +24,12 @@
     {:result (assoc (first thread) :posts posts)}))
 
 (defn create-thread
-  "Save a new thread to the database."
+  "Save a new thread and a starting post to the database."
   [db title started_by message]
-  (let [thread (create-thread-query<! db {:title title :started_by (if (= started_by 0) nil started_by)})
-        post (create-post-query<! db {:message message :thread (:id thread) :posted_by (if (= started_by 0) nil started_by)})]
-    {:result {:thread thread :post post}}))
+  (let [user-id (if (= started_by 0) nil started_by)
+        created-thread (create-thread-query<! db {:title title :started_by user-id})]
+    (create-post-query<! db {:message message :thread (:id created-thread) :posted_by user-id})
+    (get-thread db (:id created-thread))))
 
 (defrecord Threads []
   component/Lifecycle
