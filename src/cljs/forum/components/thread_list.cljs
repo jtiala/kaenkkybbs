@@ -6,6 +6,15 @@
 (defn component-did-mount []
   (actions/load-threads))
 
+(defn thread-item [thread]
+  (let [{:keys [id user_username updated_at title]} thread]
+  [:li
+   [:a {:class "thread-item" :href (str "#/threads/" id)}
+    [:span {:class "meta"}
+     [:span {:class "started_by"} (if user_username user_username "<Anonymous>")]
+     [:span {:class "updated_at"} (if updated_at (.toUTCString updated_at))]]
+    [:h3 {:class "title"} title]]]))
+
 (defn render [{:keys [threads]}]
   (if threads
     [:section {:class "thread-list"}
@@ -13,12 +22,10 @@
      [:ul
       (for [thread threads]
         ^{:key (str "thread-" (:id thread))}
-        [:li
-         [:a {:href (str "#/threads/" (:id thread))} (str (:id thread) ": " (:title thread))]])]]
-    [:span "loading threads..."]))
+        [thread-item thread])]]
+    [:span "Loading threads..."]))
 
 (defn component [state]
-  (println "THREAD LIST: " state)
   (reagent/create-class {:reagent-render render
                          :component-did-mount component-did-mount}))
 

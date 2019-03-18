@@ -87,12 +87,71 @@ button:hover {
 
 .thread-list {
   margin-bottom: 20px;
+  max-width: 600px;
 }
 
-.post {
+.thread-item {
+  background: coral;
+  color: white;
   margin-bottom: 10px;
   padding: 10px;
-  background-color: linen;
+  display: flex;
+  flex-direction: column;
+}
+
+a.thread-item:hover {
+  background-color: tomato;
+}
+
+.thread-item .meta {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: black;
+  font-size: 0.9rem;
+  padding-bottom: 2px;
+  border-bottom: 1px solid black;
+}
+
+.thread-item .title {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: normal;
+  text-transform: none;
+  margin: 10px 0 0 0;
+}
+
+.thread-item .message {
+  margin: 20px 0 0 0;
+}
+
+.thread {
+  margin-bottom: 20px;
+  max-width: 600px;
+}
+
+.post-item {
+  background: linen;
+  color: black;
+  margin-bottom: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-item .meta {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: black;
+  font-size: 0.9rem;
+  padding-bottom: 2px;
+  border-bottom: 1px solid black;
+}
+
+.post-item .message {
+  font-size: 1rem;
+  margin: 20px 0 0 0;
 }
 
 .new-post,
