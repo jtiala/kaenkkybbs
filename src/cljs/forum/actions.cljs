@@ -26,7 +26,7 @@
   (api/api-post
     "/threads" {:title title :started_by started_by :message message} state/state
     (fn [previous-state result]
-      (update-in previous-state [:threads] conj (:thread result)))))
+      (update-in previous-state [:threads] conj result))))
 
 (defn create-post [message thread posted_by]
   (api/api-post
