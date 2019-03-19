@@ -59,7 +59,8 @@ button {
   font-weight: 700;
 }
 
-button:hover {
+button:hover,
+button:focus {
   background: #aa3034;
 }
 
@@ -122,7 +123,8 @@ button:hover {
   flex-direction: column;
 }
 
-a.thread-item:hover {
+a.thread-item:hover,
+a.thread-item:focus {
   background-color: tomato;
 }
 
