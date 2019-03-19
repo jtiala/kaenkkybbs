@@ -1,6 +1,6 @@
 (ns forum.components.new-post
   (:require [forum.actions :as actions]
-            [forum.util :as util]
+            [forum.utils :as utils]
             [clojure.string :refer [trim]]
             [reagent.core :as reagent :refer [atom]]))
 
@@ -11,7 +11,7 @@
   [:select {:id "posted_by"
             :name "posted_by"
             :value (:posted-by @component-state)
-            :on-change #(swap! component-state assoc :posted-by (-> % .-target .-value util/parse-int))}
+            :on-change #(swap! component-state assoc :posted-by (-> % .-target .-value utils/parse-int))}
    (create-user-option [0 "<Anonymous>"] component-state)
    (create-user-option [1 "Kaenkkykeisari"] component-state)
    (create-user-option [2 "ananas666"] component-state)

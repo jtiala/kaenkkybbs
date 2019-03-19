@@ -1,12 +1,12 @@
 (ns forum.actions
   (:require [forum.state :as state]
             [forum.api :as api]
-            [forum.util :as util])
+            [forum.utils :as utils])
   (:require-macros [reagent.ratom :refer [reaction]]))
 
 (defn set-current-thread [id]
   (println (str "Setting current thread: " id))
-  (swap! state/state assoc-in [:thread :id] (util/parse-int id)))
+  (swap! state/state assoc-in [:thread :id] (utils/parse-int id)))
 
 (defn load-threads []
   (println "Loading all threads")

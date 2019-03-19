@@ -2,6 +2,7 @@
   (:require [reagent.core :as reagent]
             [forum.state :as state]
             [forum.actions :as actions]
+            [forum.utils :as utils]
             [forum.components.post :as post]
             [forum.components.new-post :as new-post]
             [forum.components.badge :as badge]))
@@ -17,7 +18,7 @@
       [:div {:class "post-item first"}
        [:span {:class "meta"}
         [:span {:class "started_by"} (if user_username user_username "<Anonymous>") [badge/component user_role]]
-        [:span {:class "updated_at"} (if updated_at (.toUTCString updated_at))]]
+        [:span {:class "updated_at"} (if updated_at (utils/format-timestamp updated_at))]]
        [:h2 {:class "title"} title]
        [:p {:class "message"} (:message (first posts))]]
 
