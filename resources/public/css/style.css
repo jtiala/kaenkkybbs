@@ -3,6 +3,9 @@
 body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
+  background-image: url("/images/pizza.jpg");
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 h1 {
@@ -124,6 +127,7 @@ button:disabled {
   align-items: center;
   color: white;
   padding: 20px;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
 }
 
 #footer .logo {
@@ -148,6 +152,8 @@ button:disabled {
   padding: 10px;
   display: flex;
   flex-direction: column;
+  opacity: 0.85;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
 }
 
 a.thread-item:hover,
@@ -196,11 +202,14 @@ a.thread-item:focus {
   padding: 10px;
   display: flex;
   flex-direction: column;
+  opacity: 0.85;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
 }
 
 .post-item.first {
   padding: 7px;
   border: 3px solid wheat;
+  opacity: 1;
 }
 
 .post-item .meta {
@@ -245,6 +254,7 @@ a.thread-item:focus {
 .new-thread {
   background: tomato;
   padding: 10px;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
 }
 
 .new-post h3,
