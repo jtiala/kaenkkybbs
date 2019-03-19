@@ -1,10 +1,10 @@
-# kaenkkybbs
+# 🍕 KaenkkyBBS
 
 Bulletin board for all kaenkky lovers.
 
 ## Overview
 
-Does pineapple belong in pizza? Which kaenkkylae has the best majokaenkkys? Are you willing to pay EUR 5.90 for slizing of the pizza? Discussing these matters and many more have never been as easy as it is now, with kaenkkybbs - the future of all pizza related discussion.
+Does pineapple belong in pizza? Which kaenkkylae has the best majokaenkkys? Are you willing to pay EUR 5.90 for slizing of the pizza? Discussing these matters and many more have never been as easy as it is now, with KaenkkyBBS - the future of all pizza related discussion.
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ Does pineapple belong in pizza? Which kaenkkylae has the best majokaenkkys? Are 
 
       (go)
 
-Your app should now be running at [0.0.0.0:8080](0.0.0.0:8080). When you modify the source code, just run `(reset)` in the backend repl to reload all source code.
+Your app should now be running at [localhost:8080](localhost:8080). When you modify the source code, just run `(reset)` in the backend repl to reload all source code.
 
 ## Building for production
 
@@ -58,6 +58,6 @@ To run backend tests, run
 
     lein test
 
-Frontend tests are running automatically, you can find a report page at [http://0.0.0.0:9500/figwheel-extra-main/auto-testing](http://0.0.0.0:9500/figwheel-extra-main/auto-testing). Tests can also be ran in the cli with
+Frontend tests are running automatically, you can find a report page at [http://localhost:9500/figwheel-extra-main/auto-testing](http://localhost:9500/figwheel-extra-main/auto-testing). Tests can also be ran in the cli with
 
     lein fig:test
