@@ -19,7 +19,6 @@
       [:h2 {:class "title"} title]
       [:p {:class "message"} (:message (first posts))]]
 
-     (println posts)
      (if (< (count posts) 2)
        [:p "No responses yet."]
        [:ul
