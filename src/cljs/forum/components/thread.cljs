@@ -14,7 +14,7 @@
         posts (sort-by :id (:posts (:thread @state)))]
     [:section {:class "thread"}
      [:div {:class "thread-contents"}
-      [:div {:class "thread-item"}
+      [:div {:class "post-item first"}
        [:span {:class "meta"}
         [:span {:class "started_by"} (if user_username user_username "<Anonymous>") [badge/component user_role]]
         [:span {:class "updated_at"} (if updated_at (.toUTCString updated_at))]]
