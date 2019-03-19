@@ -8,12 +8,12 @@
   (actions/load-threads))
 
 (defn thread-item [thread]
-  (let [{:keys [id user_username user_role latest_post title]} thread]
+  (let [{:keys [id user_username user_role post_count latest_post title]} thread]
   [:li
    [:a {:class "thread-item" :href (str "#/threads/" id)}
     [:span {:class "meta"}
      [:span {:class "started_by"} (if user_username user_username "<Anonymous>") [badge/component user_role]]
-     [:span {:class "latest_post"} (if latest_post (str "Latest post: " (.toUTCString latest_post)))]]
+     [:span {:class "latest_post"} post_count " messages, latest at " (.toUTCString latest_post)]]
     [:h3 {:class "title"} title]]]))
 
 (defn render [{:keys [threads]}]

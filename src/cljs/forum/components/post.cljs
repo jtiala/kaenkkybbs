@@ -6,6 +6,6 @@
   [:li {:class "post-item"}
    [:span {:class "meta"}
     [:span {:class "posted_by"} (if user_username user_username "<Anonymous>") [badge/component user_role]]
-    [:span {:class "updated_at"} (if updated_at (.toUTCString updated_at))]]
+    [:span {:class "updated_at"} (.toUTCString updated_at)]]
    [:p {:class "message"} message]]))
 

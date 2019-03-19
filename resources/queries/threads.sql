@@ -5,7 +5,7 @@ INSERT INTO threads (title, started_by) VALUES (
 );
 
 -- name: get-threads-query
-SELECT t.id, t.title, t.created_at, t.updated_at, u.id AS user_id, u.username AS user_username, u.role AS user_role, MAX(p.created_at) AS latest_post
+SELECT t.id, t.title, t.created_at, t.updated_at, u.id AS user_id, u.username AS user_username, u.role AS user_role, COUNT(p.id) AS post_count, MAX(p.created_at) AS latest_post
 FROM threads t
 LEFT JOIN users u ON t.started_by = u.id
 LEFT JOIN posts p ON t.id = p.thread
@@ -13,7 +13,7 @@ GROUP BY t.id, u.id
 ORDER BY latest_post DESC;
 
 -- name: get-thread-query
-SELECT t.id, t.title, t.created_at, t.updated_at, u.id AS user_id, u.username AS user_username, u.role AS user_role, MAX(p.created_at) AS latest_post
+SELECT t.id, t.title, t.created_at, t.updated_at, u.id AS user_id, u.username AS user_username, u.role AS user_role, COUNT(p.id) AS post_count, MAX(p.created_at) AS latest_post
 FROM threads t
 LEFT JOIN users u ON t.started_by = u.id
 LEFT JOIN posts p ON t.id = p.thread
