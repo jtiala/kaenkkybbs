@@ -64,6 +64,11 @@ button:focus {
   background: #aa3034;
 }
 
+button:disabled {
+  background-color: #dc1e32;
+  opacity: 0.75;
+}
+
 .badge {
   font-size: 8px;
   font-weight: 700;

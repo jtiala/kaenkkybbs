@@ -25,6 +25,7 @@
 
 (defn submit-button [component-state]
   [:button {:type "submit"
+            :disabled (empty? (trim (:message @component-state)))
             :on-click (fn [event]
                         (.preventDefault event)
                         (actions/create-post (trim (:message @component-state)) (:thread @component-state) (:posted-by @component-state))
