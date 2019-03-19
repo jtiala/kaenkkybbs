@@ -20,7 +20,7 @@
     [:section {:class "thread-list"}
      [:h2 (str "Threads (" (count threads) ")")]
      [:ul
-      (for [thread (sort-by :updated-at threads)]
+      (for [thread (reverse (sort-by :latest_post threads))]
         ^{:key (str "thread-" (:id thread))}
         [thread-item thread])]]
     [:span "Loading threads..."]))
