@@ -37,7 +37,7 @@
                                :posted-by 0})]
     (fn []
       [:div {:class "new-post"}
-       [:h3 "Add new post"]
+       [:h3 "Write a response"]
        [:form
         [:label {:for "posted_by"} "Send as (tmp)"]
         [posted-by-select component-state]
