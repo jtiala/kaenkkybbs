@@ -22,7 +22,7 @@
        [:p {:class "message"} (:message (first posts))]]
 
       (if (< (count posts) 2)
-        [:p "No responses yet."]
+        [:p {:class "no-responses"} "No responses yet."]
         [:ul
          (for [post (drop 1 posts)]
            ^{:key (str "post-" (:id post))}

@@ -204,6 +204,14 @@ a.thread-item:focus {
   margin: 20px 0 0 0;
 }
 
+.no-responses {
+  background: bisque;
+  padding: 10px;
+  margin: 0 0 10px 0;
+  font-style: italic;
+  opacity: 0.75;
+}
+
 /* NEW POST/THREAD FORMS */
 
 .new-post,
