@@ -83,11 +83,12 @@ button:disabled {
 #layout {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  min-height: 100vh;
 }
 
 #main {
   margin: 10px;
+  flex-grow: 1;
 }
 
 #main > section {
@@ -99,7 +100,7 @@ button:disabled {
 /* HEADER */
 
 #header {
-  flex-grow: 1;
+  flex-grow: 0;
   background-color: #dc1e32;
   box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
   padding: 10px;
@@ -111,6 +112,27 @@ button:disabled {
   margin: 0;
   padding: 0;
   color: white;
+}
+
+/* FOOTER */
+
+#footer {
+  flex-grow: 0;
+  background: tomato;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  padding: 20px;
+}
+
+#footer .logo {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+#footer .copyright {
+  font-size: 0.9rem;
 }
 
 /* HOME ROUTE */
