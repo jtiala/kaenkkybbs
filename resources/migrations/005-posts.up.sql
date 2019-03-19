@@ -22,11 +22,11 @@ INSERT INTO posts (message, thread, posted_by) VALUES (
 ), (
   'DaMax - simply the best', 1, 3
 ), (
-  'IMHO pizza ain''t pizza without pineapple', 2, 2
+  'IMHO pizza ain''t pizza without pineapple', 2, 3
 ), (
   '^ This.', 2, 1
 ), (
-  'Why would anyone not love it?', 3, 3
+  'Why would anyone not love it?', 3, 2
 ), (
-  'YAY!', 3, 1
+  'YAY!', 3, 3
 );

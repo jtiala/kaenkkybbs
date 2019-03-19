@@ -61,6 +61,17 @@ button:hover {
   background: #aa3034;
 }
 
+.badge {
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: #dc1e32;
+  color: white;
+  border-radius: 3px;
+  padding: 2px 3px;
+  margin: 0 5px;
+}
+
 #layout {
   display: flex;
   flex-direction: column;

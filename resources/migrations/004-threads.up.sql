@@ -13,7 +13,7 @@ CREATE TABLE threads (
 INSERT INTO threads (title, started_by) VALUES (
   'Your fav kaenkkylaes in Oulu', 1
 ),(
-  'Does pineapple belong in pizza?', 2
+  'Does pineapple belong in pizza?', 3
 ),(
   'Mayonnase in pizza - yay or nay?', 2
 );

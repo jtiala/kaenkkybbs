@@ -18,7 +18,7 @@ INSERT INTO users (email, username, password, role) VALUES (
   'ananas666@example.com',
   'ananas666',
   crypt('ananas', gen_salt('bf', 8)),
-  'admin'
+  'moderator'
 ), (
   'pizzakuski@example.com',
   'PizzaKuski',
