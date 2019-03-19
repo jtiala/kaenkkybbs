@@ -19,7 +19,6 @@
 (defn render [{:keys [threads]}]
   (if threads
     [:section {:class "thread-list"}
-     [:h2 (str "Threads (" (count threads) ")")]
      [:ul
       (for [thread (reverse (sort-by :latest_post threads))]
         ^{:key (str "thread-" (:id thread))}

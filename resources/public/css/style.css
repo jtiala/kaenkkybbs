@@ -1,3 +1,5 @@
+/* COMMON */
+
 body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
@@ -78,6 +80,18 @@ button:hover {
   justify-content: center;
 }
 
+#main {
+  margin: 10px;
+}
+
+#main > section {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* HEADER */
+
 #header {
   flex-grow: 1;
   background-color: #dc1e32;
@@ -92,13 +106,10 @@ button:hover {
   color: white;
 }
 
-#main {
-  margin: 10px;
-}
+/* HOME ROUTE */
 
 .thread-list {
-  margin-bottom: 20px;
-  max-width: 600px;
+  flex-grow: 1;
 }
 
 .thread-item {
@@ -136,9 +147,12 @@ a.thread-item:hover {
   margin: 20px 0 0 0;
 }
 
-.thread {
-  margin-bottom: 20px;
-  max-width: 600px;
+/* THREAD ROUTE */
+
+.thread-contents {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .post-item {
@@ -165,11 +179,12 @@ a.thread-item:hover {
   margin: 20px 0 0 0;
 }
 
+/* NEW POST/THREAD FORMS */
+
 .new-post,
 .new-thread {
   background: tomato;
   padding: 10px;
-  max-width: 400px;
 }
 
 .new-post h3,
@@ -206,3 +221,18 @@ a.thread-item:hover {
   margin-bottom: 10px;
   font-size: 1.1rem;
 }
+
+/* RESPONSIVE STYLES FOR DESKTOP SCREENS */
+
+@media only screen and (min-width: 1024px) {
+  #main > section {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .new-thread,
+  .new-post {
+    margin-left: 10px;
+    width: 400px;
+}
+

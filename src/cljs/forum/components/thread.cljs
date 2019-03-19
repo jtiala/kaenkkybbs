@@ -13,19 +13,20 @@
   (let [{:keys [title user_username user_role updated_at]} (:thread @state)
         posts (sort-by :id (:posts (:thread @state)))]
     [:section {:class "thread"}
-     [:div {:class "thread-item"}
-      [:span {:class "meta"}
-       [:span {:class "started_by"} (if user_username user_username "<Anonymous>") [badge/component user_role]]
-       [:span {:class "updated_at"} (if updated_at (.toUTCString updated_at))]]
-      [:h2 {:class "title"} title]
-      [:p {:class "message"} (:message (first posts))]]
+     [:div {:class "thread-contents"}
+      [:div {:class "thread-item"}
+       [:span {:class "meta"}
+        [:span {:class "started_by"} (if user_username user_username "<Anonymous>") [badge/component user_role]]
+        [:span {:class "updated_at"} (if updated_at (.toUTCString updated_at))]]
+       [:h2 {:class "title"} title]
+       [:p {:class "message"} (:message (first posts))]]
 
-     (if (< (count posts) 2)
-       [:p "No responses yet."]
-       [:ul
-        (for [post (drop 1 posts)]
-          ^{:key (str "post-" (:id post))}
-          [post/component post]) ])
+      (if (< (count posts) 2)
+        [:p "No responses yet."]
+        [:ul
+         (for [post (drop 1 posts)]
+           ^{:key (str "post-" (:id post))}
+           [post/component post]) ])]
      [new-post/component state]]))
 
 (defn component [state]
