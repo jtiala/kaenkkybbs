@@ -21,7 +21,7 @@
   [:input {:id "title"
            :name "title"
            :on-change #(swap! component-state assoc :title (-> % .-target .-value))
-           }])
+           :value (:title @component-state)}])
 
 (defn message-textarea [component-state]
   [:textarea {:id "message"
