@@ -30,7 +30,7 @@ Does pineapple belong in pizza? Which kaenkkylae has the best majokaenkkys? Are 
 
       (go)
 
-Your app should now be running at [localhost:8080](localhost:8080). When you modify the source code, just run `(reset)` in the backend repl to reload all source code.
+Your app should now be running at [http://localhost:8080](http://localhost:8080). When you modify the source code, just run `(reset)` in the backend repl to reload all source code.
 
 ## Building for production
 
