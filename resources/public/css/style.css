@@ -157,7 +157,7 @@ a.thread-item:focus {
 
 .thread-item .meta {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   color: #333;
   font-size: 0.9rem;
@@ -205,7 +205,7 @@ a.thread-item:focus {
 
 .post-item .meta {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   color: #333;
   font-size: 0.9rem;
@@ -294,5 +294,11 @@ a.thread-item:focus {
   .new-post {
     margin-left: 10px;
     width: 400px;
+  }
+
+  .thread-item .meta,
+  .post-item .meta {
+    flex-direction: row;
+  }
 }
 
