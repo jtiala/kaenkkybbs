@@ -351,7 +351,8 @@ a.thread-item:focus {
   }
 
   .new-thread,
-  .new-post {
+  .new-post,
+  .login {
     margin-left: 10px;
     width: 400px;
   }
