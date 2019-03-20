@@ -107,14 +107,42 @@ button:disabled {
   background-color: #dc1e32;
   box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#header h1,
-#header h1 a,
-#header h1 a:hover {
+#header h1 {
   margin: 0;
   padding: 0;
+  font-size: 1.5rem;
   color: white;
+}
+
+#header h1 a,
+#header h1 a:hover {
+  color: white;
+}
+
+#header .user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8em;
+  color: white;
+  margin-top: 10px;
+}
+
+#header .user button {
+  margin: 5px 0 0 0;
+  padding: 0;
+  text-transform: none;
+  background: transparent;
+}
+
+#header .user button:hover,
+#header .user button:focus {
+  color: #ddd;
 }
 
 /* FOOTER */
@@ -248,29 +276,33 @@ a.thread-item:focus {
   opacity: 0.75;
 }
 
-/* NEW POST/THREAD FORMS */
+/* NEW POST/NEW THREAD/LOGIN FORMS */
 
 .new-post,
-.new-thread {
+.new-thread,
+.login {
   background: tomato;
   padding: 10px;
   box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
 }
 
 .new-post h3,
-.new-thread h3 {
+.new-thread h3,
+.login h3 {
   color: white;
   margin: 0 0 10px 0;
 }
 
 .new-post form,
-.new-thread form {
+.new-thread form,
+.login form {
   display: flex;
   flex-direction: column;
 }
 
 .new-post label,
-.new-thread label {
+.new-thread label,
+.login label {
   margin-bottom: 5px;
   color: white;
 }
@@ -287,17 +319,35 @@ a.thread-item:focus {
   height: 60px;
 }
 
-.new-thread input {
+.new-thread input,
+.login input {
   margin-bottom: 10px;
   font-size: 1.1rem;
 }
 
 /* RESPONSIVE STYLES FOR DESKTOP SCREENS */
 
+@media only screen and (min-width: 400px) {
+  #header {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #header .user {
+    align-items: flex-end;
+  }
+}
+
 @media only screen and (min-width: 1024px) {
   #main > section {
     flex-direction: row;
     align-items: flex-start;
+  }
+
+  #header h1 {
+    font-size: 2rem;
   }
 
   .new-thread,

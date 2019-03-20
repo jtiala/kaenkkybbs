@@ -12,8 +12,8 @@
   (println "Loading all threads")
   (api/api-get
     "/threads" {} state/state
-    (fn [old-state threads]
-      (assoc old-state :threads threads))))
+    (fn [old-state result]
+      (assoc old-state :threads result))))
 
 (defn load-thread [id]
   (println (str "Loading thread: " id))
@@ -33,3 +33,12 @@
     "/posts" {:message message :thread thread :posted_by posted_by} state/state
     (fn [previous-state result]
       (update-in previous-state [:thread :posts] conj result))))
+
+(defn login [email password]
+  (api/api-post
+    "/users/login" {:email email :password password} state/state
+    (fn [previous-state result]
+      (assoc previous-state :user result))))
+
+(defn logout []
+  (swap! state/state #(assoc % :user nil)))

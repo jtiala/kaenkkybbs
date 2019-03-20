@@ -5,6 +5,7 @@
             [forum.utils :as utils]
             [forum.components.post :as post]
             [forum.components.new-post :as new-post]
+            [forum.components.login :as login]
             [forum.components.badge :as badge]))
 
 (defn component-did-mount [this]
@@ -28,7 +29,10 @@
          (for [post (drop 1 posts)]
            ^{:key (str "post-" (:id post))}
            [post/component post]) ])]
-     [new-post/component state]]))
+
+     (if (state/logged-in? state)
+       [new-post/component state]
+       [login/component state])]))
 
 (defn component [state]
   (reagent/create-class {:reagent-render render
