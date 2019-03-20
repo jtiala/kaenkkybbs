@@ -1,9 +1,10 @@
 (ns forum.services.users
   (:require [com.stuartsierra.component :as component]
             [compojure
-             [core :as compojure :refer [GET]]
+             [core :as compojure :refer [GET POST]]
              [coercions :refer [as-int]]]
             [jeesql.core :refer [defqueries]]
+            [forum.transit-util :refer [transit->clj]]
             [forum.http-server :refer [publish-service]]))
 
 (defqueries "queries/users.sql")
@@ -20,6 +21,12 @@
   (let [result (get-user-query db {:id id})]
     {:result (first result)}))
 
+(defn login
+  "Get a user from the database based on email+password combination."
+  [db email password]
+  (let [result (login-query db {:email email :password password})]
+    {:result (first result)}))
+
 (defrecord Users []
   component/Lifecycle
   (start [{server :http-server
@@ -29,6 +36,10 @@
                               (get-users db)))
     (publish-service server (GET "/api/users/:id" [id :<< as-int]
                               (get-user db id)))
+    (publish-service server (POST "/api/users/login" {body :body}
+                              (let [{email :email
+                                     password :password} (transit->clj body)]
+                                (login db email password))))
     this)
   (stop [this]
     this))
