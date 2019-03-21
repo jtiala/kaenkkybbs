@@ -1,7 +1,7 @@
 (ns forum.services.threads
   (:require [com.stuartsierra.component :as component]
             [compojure
-             [core :as compojure :refer [GET POST]]
+             [core :as compojure :refer [GET POST DELETE]]
              [coercions :refer [as-int]]]
             [jeesql.core :refer [defqueries]]
             [forum.transit-util :refer [transit->clj]]
@@ -31,6 +31,12 @@
     (create-post-query<! db {:message message :thread (:id created-thread) :posted_by user-id})
     (get-thread db (:id created-thread))))
 
+(defn delete-thread
+  "Delete a thread from the database."
+  [db id]
+  (let [result (delete-thread-query! db {:id id})]
+    {:result (= result 1)}))
+
 (defrecord Threads []
   component/Lifecycle
   (start [{server :http-server
@@ -45,6 +51,8 @@
                                      started_by :started_by
                                      message :message} (transit->clj body)]
                                 (create-thread db title started_by message))))
+    (publish-service server (DELETE "/api/threads/:id" [id :<< as-int]
+                              (delete-thread db id)))
     this)
   (stop [this]
     this))
