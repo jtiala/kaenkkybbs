@@ -6,7 +6,7 @@
 
 (defn component []
   [:section {:id "layout"}
-   [header/component state/state]
+   [header/component (:user @state/state)]
    [:section {:id "main"}
     [routing/current-route state/state]]
    [footer/component]])

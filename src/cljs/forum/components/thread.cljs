@@ -3,6 +3,7 @@
             [forum.state :as state]
             [forum.actions :as actions]
             [forum.utils :as utils]
+            [forum.selectors :as selectors]
             [forum.components.post :as post]
             [forum.components.new-post :as new-post]
             [forum.components.login :as login]
@@ -28,9 +29,9 @@
         [:ul
          (for [post (drop 1 posts)]
            ^{:key (str "post-" (:id post))}
-           [post/component post state]) ])]
+           [post/component post (:user @state)]) ])]
 
-     (if (state/logged-in? state)
+     (if (selectors/logged-in? (:user @state))
        [new-post/component state]
        [login/component state])]))
 
