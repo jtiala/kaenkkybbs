@@ -15,7 +15,7 @@
             :on-click (fn [event]
                         (.preventDefault event)
                         (actions/create-post (trim (:message @component-state)) (:thread @component-state) (:posted-by @component-state))
-                        (swap! component-state assoc :message "" :posted-by 0))}
+                        (swap! component-state assoc :message ""))}
    "Send"])
 
 (defn component [state]
