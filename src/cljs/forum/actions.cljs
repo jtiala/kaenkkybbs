@@ -28,6 +28,14 @@
     (fn [previous-state result]
       (update-in previous-state [:threads] conj result))))
 
+(defn delete-thread [id]
+  (api/api-delete
+    (str "/threads/" id) {} state/state
+    (fn [previous-state result]
+      (if (= result true)
+        (update-in previous-state [:threads] (partial filter #(not= (:id %) id)))
+        previous-state))))
+
 (defn create-post [message thread posted_by]
   (api/api-post
     "/posts" {:message message :thread thread :posted_by posted_by} state/state
