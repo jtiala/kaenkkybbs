@@ -1,11 +1,23 @@
 (ns forum.components.post
-  (:require [forum.components.badge :as badge]))
+  (:require [forum.components.badge :as badge]
+            [forum.actions :as actions]
+            [forum.state :as state]))
 
-(defn component [post]
-  (let [{:keys [user_username user_role updated_at message]} post]
-  [:li {:class "post-item"}
-   [:span {:class "meta"}
-    [:span {:class "posted_by"} (if user_username user_username "<Anonymous>") [badge/component user_role]]
-    [:span {:class "updated_at"} (.toUTCString updated_at)]]
-   [:p {:class "message"} message]]))
+(defn component [post state]
+  (let [{:keys [user_id user_username user_role updated_at message]} post]
+    [:li {:class "post-item"}
+     [:span {:class "meta"}
+      [:span {:class "posted_by"} (if user_username user_username "<Anonymous>") [badge/component user_role]]
+      [:span {:class "updated_at"} (.toUTCString updated_at)]]
+     [:p {:class "message"} message]
+     (if
+       (and
+         (state/logged-in? state)
+         (or
+           (= (state/get-userrole state) "admin")
+           (= (state/get-userrole state) "moderator")
+           (= (state/get-userid state) user_id)))
+       [:span {:class "actions"}
+        [:button {:on-click (fn [_] (actions/delete-post (:id post)))}
+         "Delete message"]])]))
 

@@ -215,6 +215,31 @@ a.thread-item:focus {
   margin: 20px 0 0 0;
 }
 
+.thread-item .actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  color: #333;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px solid rgba(0,0,0,0.2);
+}
+
+.thread-item .actions button {
+  margin: 0 5px 0 0;
+  padding: 0;
+  text-transform: none;
+  background: transparent;
+  color: black;
+}
+
+.thread-item .actions button:hover,
+.thread-item .actions button:focus {
+  color: #666;
+}
+
+
 /* THREAD ROUTE */
 
 .thread-contents {
@@ -274,6 +299,30 @@ a.thread-item:focus {
   margin: 0 0 10px 0;
   font-style: italic;
   opacity: 0.75;
+}
+
+.post-item .actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  color: #333;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px solid rgba(0,0,0,0.2);
+}
+
+.post-item .actions button {
+  margin: 0 5px 0 0;
+  padding: 0;
+  text-transform: none;
+  background: transparent;
+  color: black;
+}
+
+.post-item .actions button:hover,
+.post-item .actions button:focus {
+  color: #666;
 }
 
 /* NEW POST/NEW THREAD/LOGIN FORMS */

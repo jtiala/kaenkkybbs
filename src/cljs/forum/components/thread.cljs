@@ -28,7 +28,7 @@
         [:ul
          (for [post (drop 1 posts)]
            ^{:key (str "post-" (:id post))}
-           [post/component post]) ])]
+           [post/component post state]) ])]
 
      (if (state/logged-in? state)
        [new-post/component state]

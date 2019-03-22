@@ -34,6 +34,14 @@
     (fn [previous-state result]
       (update-in previous-state [:thread :posts] conj result))))
 
+(defn delete-post [id]
+  (api/api-delete
+    (str "/posts/" id) {} state/state
+    (fn [previous-state result]
+      (if (= result true)
+        (update-in previous-state [:thread :posts] (partial filter #(not= (:id %) id)))
+        previous-state))))
+
 (defn login [email password]
   (api/api-post
     "/users/login" {:email email :password password} state/state
