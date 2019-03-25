@@ -15,7 +15,7 @@
 (deftest get-post-test
   (testing "get-post returns correct post"
     (with-redefs [get-post-query (fn [db params] (filter #(= (:id %) (:id params)) mock))]
-      (is (= (get-post nil 2) {:result (list (nth mock 1))})
+      (is (= (get-post nil 2) {:result (nth mock 1)})
           "Should return correct post when id is given and corresponding post exists")
-      (is (= (get-post nil 99) {:result '()})
-          "Should return an empty list when id is given but no corresponding post exists"))))
+      (is (= (get-post nil 99) {:result nil})
+          "Should return nil when id is given but no corresponding post exists"))))

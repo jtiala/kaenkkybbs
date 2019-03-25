@@ -15,7 +15,7 @@
 (deftest get-user-test
   (testing "get-user returns correct user"
     (with-redefs [get-user-query (fn [db params] (filter #(= (:id %) (:id params)) mock))]
-      (is (= (get-user nil 2) {:result (list (nth mock 1))})
+      (is (= (get-user nil 2) {:result (nth mock 1)})
           "Should return correct user when id is given and corresponding user exists")
-      (is (= (get-user nil 99) {:result '()})
-          "Should return an empty list when id is given but no corresponding user exists"))))
+      (is (= (get-user nil 99) {:result nil})
+          "Should return nil when id is given but no corresponding user exists"))))
