@@ -25,3 +25,4 @@ pom.xml.asc
 *.swp
 
 resources/public/cljs-out
+config.edn

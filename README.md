@@ -14,6 +14,10 @@ Does pineapple belong in pizza? Which kaenkkylae has the best majokaenkkys? Are 
 
 ## Development
 
+- Copy `config.edn.example` as `config.edn` and edit in your details
+
+      cp config.edn.example config.edn
+
 - Build and start database container
 
       docker-compose up
