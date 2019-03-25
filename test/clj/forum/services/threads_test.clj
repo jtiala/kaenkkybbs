@@ -14,8 +14,9 @@
 
 (deftest get-thread-test
   (testing "get-thread returns correct thread"
-    (with-redefs [get-thread-query (fn [db params] (filter #(= (:id %) (:id params)) mock))]
-      (is (= (get-thread nil 2) {:result (nth mock 1)})
+    (with-redefs [get-thread-query (fn [db params] (filter #(= (:id %) (:id params)) mock))
+                  get-posts-by-thread-query (fn [db params] [])]
+      (is (= (get-thread nil 2) {:result  (assoc (nth mock 1) :posts '())})
           "Should return correct thread when id is given and corresponding thread exists")
       (is (= (get-thread nil 99) {:result nil})
           "Should return nil when id is given but no corresponding thread exists"))))

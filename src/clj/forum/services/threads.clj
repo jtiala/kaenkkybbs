@@ -22,7 +22,7 @@
   [db id]
   (let [thread (get-thread-query db {:id id})
         posts (get-posts-by-thread-query db {:thread id})]
-    (utils/format-response (assoc (first thread) :posts posts))))
+    (utils/format-response (when (first thread) (assoc (first thread) :posts posts)))))
 
 (defn create-thread
   "Save a new thread and a starting post to the database."
