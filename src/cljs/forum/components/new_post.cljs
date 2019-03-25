@@ -23,7 +23,7 @@
                                :thread (get-in @state [:thread :id])
                                :posted-by (get-in @state [:user :id] 0)})]
     (fn []
-      [:div {:class "new-post"}
+      [:div.new-post
        [:h3 "Write a response"]
        [:form
         [:label {:for "message"} "Your message"]

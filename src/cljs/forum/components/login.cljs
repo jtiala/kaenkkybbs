@@ -32,7 +32,7 @@
   (let [component-state (atom {:email ""
                                :password ""})]
     (fn []
-      [:div {:class "login"}
+      [:div.login
        [:h3 "Login"]
        [:form
         [:label {:for "email"} "Email"]

@@ -5,9 +5,9 @@
             [forum.selectors :as selectors]))
 
 (defn component [state]
-  [:section {:class "home"}
+  [:section.home
    [thread-list/component @state]
    (if (selectors/logged-in? (:user @state))
      [new-thread/component @state]
-     [login/component @state])
-   ])
+     [login/component @state])])
+

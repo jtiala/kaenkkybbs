@@ -12,11 +12,11 @@
 (defn thread-item [thread user]
   (let [{:keys [id user_id user_username user_role post_count latest_post title]} thread]
   [:li
-   [:a {:class "thread-item" :href (str "#/threads/" id)}
-    [:span {:class "meta"}
-     [:span {:class "started_by"} (if user_username user_username "<Anonymous>") [badge/component user_role]]
-     [:span {:class "latest_post"} post_count " messages, latest at " (utils/format-timestamp latest_post)]]
-    [:h3 {:class "title"} title]
+   [:a.thread-item {:href (str "#/threads/" id)}
+    [:span.meta
+     [:span.started_by (if user_username user_username "<Anonymous>") [badge/component user_role]]
+     [:span.latest_post post_count " messages, latest at " (utils/format-timestamp latest_post)]]
+    [:h3.title title]
      (if
        (and
          (selectors/logged-in? user)
@@ -24,7 +24,7 @@
            (= (selectors/get-user-role user) "admin")
            (= (selectors/get-user-role user) "moderator")
            (= (selectors/get-user-id user) user_id)))
-       [:span {:class "actions"}
+       [:span.actions
         [:button {:on-click (fn [event]
                               (.preventDefault event)
                               (actions/delete-thread (:id thread)))}
@@ -33,7 +33,7 @@
 
 (defn render [{:keys [threads user]}]
   (if threads
-    [:section {:class "thread-list"}
+    [:section.thread-list
      [:ul
       (for [thread (reverse (sort-by :latest_post threads))]
         ^{:key (str "thread-" (:id thread))}

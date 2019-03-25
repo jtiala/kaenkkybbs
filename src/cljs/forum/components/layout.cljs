@@ -5,8 +5,8 @@
             [forum.state :as state]))
 
 (defn component []
-  [:section {:id "layout"}
+  [:section#layout
    [header/component (:user @state/state)]
-   [:section {:id "main"}
+   [:section#main
     [routing/current-route state/state]]
    [footer/component]])

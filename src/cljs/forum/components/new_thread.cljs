@@ -31,7 +31,7 @@
                                :started-by (get-in state [:user :id] 0)
                                :message ""})]
     (fn []
-      [:div {:class "new-thread"}
+      [:div.new-thread
        [:h3 "Start a new thread"]
        [:form
         [:label {:for "title"} "Title"]
