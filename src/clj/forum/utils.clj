@@ -16,5 +16,3 @@
 (defn format-response [data]
   "Formats data to be used as an API response"
   {:result (format-keys data)})
-
-(format-response {:asd_asd 1})

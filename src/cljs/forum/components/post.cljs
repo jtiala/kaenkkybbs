@@ -8,7 +8,7 @@
     [:li.post-item
      [:span.meta
       [:span.posted-by (if user-username user-username "<Anonymous>") [badge/component user-role]]
-      [:span.updated-at  (.toUTCString updated-at)]]
+      [:span.updated-at (.toUTCString updated-at)]]
      [:p.message  message]
      (if
        (and
