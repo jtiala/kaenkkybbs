@@ -13,14 +13,14 @@
   (actions/load-thread (-> this reagent/argv second deref (get-in [:thread :id]))))
 
 (defn render [state]
-  (let [{:keys [title user_username user_role updated_at]} (:thread @state)
+  (let [{:keys [title user-username user-role updated-at]} (:thread @state)
         posts (sort-by :id (:posts (:thread @state)))]
     [:section.thread
      [:div.thread-contents
       [:div.post-item.first
        [:span.meta
-        [:span.started_by (if user_username user_username "<Anonymous>") [badge/component user_role]]
-        [:span.updated_at (if updated_at (utils/format-timestamp updated_at))]]
+        [:span.started-by (if user-username user-username "<Anonymous>") [badge/component user-role]]
+        [:span.updated-at (if updated-at (utils/format-timestamp updated-at))]]
        [:h2.title title]
        [:p.message (:message (first posts))]]
 

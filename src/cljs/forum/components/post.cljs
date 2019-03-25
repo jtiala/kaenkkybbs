@@ -4,11 +4,11 @@
             [forum.selectors :as selectors]))
 
 (defn component [post user]
-  (let [{:keys [user_id user_username user_role updated_at message]} post]
+  (let [{:keys [user-id user-username user-role updated-at message]} post]
     [:li.post-item
      [:span.meta
-      [:span.posted_by (if user_username user_username "<Anonymous>") [badge/component user_role]]
-      [:span.updated_at  (.toUTCString updated_at)]]
+      [:span.posted-by (if user-username user-username "<Anonymous>") [badge/component user-role]]
+      [:span.updated-at  (.toUTCString updated-at)]]
      [:p.message  message]
      (if
        (and
@@ -16,7 +16,7 @@
          (or
            (= (selectors/get-user-role user) "admin")
            (= (selectors/get-user-role user) "moderator")
-           (= (selectors/get-user-id user) user_id)))
+           (= (selectors/get-user-id user) user-id)))
        [:span.actions
         [:button {:on-click (fn [_] (actions/delete-post (:id post)))}
          "Delete message"]])]))

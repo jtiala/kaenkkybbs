@@ -5,6 +5,7 @@
              [coercions :refer [as-int]]]
             [jeesql.core :refer [defqueries]]
             [forum.transit-util :refer [transit->clj]]
+            [forum.utils :as utils]
             [forum.http-server :refer [publish-service]]))
 
 (defqueries "queries/threads.sql")
@@ -14,14 +15,14 @@
   "Get a list of threads from the database."
   [db]
   (let [result (get-threads-query db)]
-    {:result result}))
+    (utils/format-response result)))
 
 (defn get-thread
   "Get a thread and its posts from the database."
   [db id]
   (let [thread (get-thread-query db {:id id})
         posts (get-posts-by-thread-query db {:thread id})]
-    {:result (assoc (first thread) :posts posts)}))
+    (utils/format-response (assoc (first thread) :posts posts))))
 
 (defn create-thread
   "Save a new thread and a starting post to the database."
@@ -35,7 +36,7 @@
   "Delete a thread from the database."
   [db id]
   (let [result (delete-thread-query! db {:id id})]
-    {:result (= result 1)}))
+    (utils/format-response (= result 1))))
 
 (defrecord Threads []
   component/Lifecycle

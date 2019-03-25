@@ -199,7 +199,7 @@ a.thread-item:focus {
   border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
-.thread-item .meta .started_by {
+.thread-item .meta .started-by {
   display: flex;
   align-items: center;
 }
@@ -282,8 +282,8 @@ a.thread-item:focus {
   margin: 10px 0 0 0;
 }
 
-.post-item .meta .started_by,
-.post-item .meta .posted_by {
+.post-item .meta .started-by,
+.post-item .meta .posted-by {
   display: flex;
   align-items: center;
 }

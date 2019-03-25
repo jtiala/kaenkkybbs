@@ -5,6 +5,7 @@
              [coercions :refer [as-int]]]
             [jeesql.core :refer [defqueries]]
             [forum.transit-util :refer [transit->clj]]
+            [forum.utils :as utils]
             [forum.http-server :refer [publish-service]]))
 
 (defqueries "queries/posts.sql")
@@ -13,13 +14,13 @@
   "Get a list of posts from the database."
   [db]
   (let [result (get-posts-query db)]
-    {:result result}))
+    (utils/format-response result)))
 
 (defn get-post
   "Get a post from the database."
   [db id]
   (let [result (get-post-query db {:id id})]
-    {:result (first result)}))
+    (utils/format-response (first result))))
 
 (defn create-post
   "Save a new post to the database."
@@ -32,7 +33,7 @@
   "Delete a post from the database."
   [db id]
   (let [result (delete-post-query! db {:id id})]
-    {:result (= result 1)}))
+    (utils/format-response (= result 1))))
 
 (defrecord Posts []
   component/Lifecycle
