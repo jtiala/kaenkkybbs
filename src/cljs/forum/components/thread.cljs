@@ -14,7 +14,8 @@
 
 (defn render [state]
   (let [{:keys [title user-username user-role updated-at]} (:thread @state)
-        posts (sort-by :id (:posts (:thread @state)))]
+        posts (sort-by :id (:posts (:thread @state)))
+        user (:user @state)]
     [:section.thread
      [:div.thread-contents
       [:div.post-item.first
@@ -29,9 +30,9 @@
         [:ul
          (for [post (drop 1 posts)]
            ^{:key (str "post-" (:id post))}
-           [post/component post (:user @state)]) ])]
+           [post/component post user])])]
 
-     (if (selectors/logged-in? (:user @state))
+     (if (selectors/logged-in? user)
        [new-post/component state]
        [login/component state])]))
 
