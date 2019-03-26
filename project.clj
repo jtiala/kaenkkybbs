@@ -38,6 +38,5 @@
                    :main user}
              :test {:source-paths ["test/clj" "test/cljs"]}}
 
-  :clean-targets ^{:protect false} ["resources/public/cljs-out" "target"]
-
-  :main forum.core)
+  :main forum.core
+  :aot [forum.core])
