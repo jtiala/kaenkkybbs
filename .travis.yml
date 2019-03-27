@@ -1,3 +1,8 @@
 language: clojure
 before_script:
   - cp config.edn.example config.edn
+deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  run:
+    - "cp config.edn.example config.edn"
