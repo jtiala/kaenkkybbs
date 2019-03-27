@@ -1,4 +1,6 @@
 language: clojure
+before_script:
+  - cp config.edn.example config.edn
 deploy:
   provider: elasticbeanstalk
   access_key_id:
