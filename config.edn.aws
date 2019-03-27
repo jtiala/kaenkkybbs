@@ -1,0 +1,7 @@
+{:db {:classname "org.postgresql.Driver"
+      :subprotocol "postgresql"
+      :subname "//aaort8bhm6j2cr.cgigpw5rrxkn.eu-west-1.rds.amazonaws.com:5432/ebdb"
+      :user "username"
+      :password "password"
+      :url "jdbc:postgresql://aaort8bhm6j2cr.cgigpw5rrxkn.eu-west-1.rds.amazonaws.com/ebdb?user=username&password=password"}
+ :http-server {:port 80}}

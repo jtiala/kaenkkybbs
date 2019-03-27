@@ -26,3 +26,8 @@ pom.xml.asc
 
 resources/public/cljs-out
 config.edn
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
