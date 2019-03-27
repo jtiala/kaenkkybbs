@@ -1,9 +1,4 @@
 language: clojure
-services:
-  - postgresql
-before_script:
-  - cp config.edn.travis config.edn
-  - psql -c 'CREATE DATABASE kaenkkybbs;' -U postgres
 deploy:
   provider: elasticbeanstalk
   access_key_id:

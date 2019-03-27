@@ -1,7 +1,0 @@
-{:db {:classname "org.postgresql.Driver"
-      :subprotocol "postgresql"
-      :subname "//localhost:5432/kaenkkybbs"
-      :user "postgres"
-      :password ""
-      :url "jdbc:postgresql://localhost/kaenkkybbs?user=postgres"}
- :http-server {:port 8080}}

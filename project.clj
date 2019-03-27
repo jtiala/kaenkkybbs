@@ -1,8 +1,8 @@
-(defproject forum "0.1.0-SNAPSHOT"
-  :description "FIXME: write this!"
-  :url "https://example.com/FIXME"
-  :license {:name "FIXME: Choose a license"
-            :url "https://choosealicense.com/"}
+(defproject kaenkkybbs "0.1.0-SNAPSHOT"
+  :description "KaenkkyBBS: Bulletin board for all kaenkky lovers."
+  :url "https://github.com/jtiala/kaenkkybbs"
+  :license {:name "MIT"
+            :url "https://github.com/jtiala/kaenkkybbs/blob/master/LICENSE"}
 
   :min-lein-version "2.7.1"
 
