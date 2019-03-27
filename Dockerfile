@@ -2,7 +2,7 @@ FROM clojure:lein-alpine
 RUN mkdir -p /app /app/resources
 WORKDIR /app
 COPY . .
-COPY config.edn.aws config.edn
+COPY config.edn.example config.edn
 RUN lein fig:min
 RUN lein uberjar
 COPY config.edn.aws config.edn

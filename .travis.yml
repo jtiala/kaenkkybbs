@@ -1,14 +1,3 @@
 language: clojure
 before_script:
   - cp config.edn.example config.edn
-deploy:
-  provider: elasticbeanstalk
-  access_key_id:
-    secure: $AWS_ACCESS_KEY_ID
-  secret_access_key:
-    secure: $AWS_SECRET_ACCESS_KEY
-  region: $AWS_REGION
-  app: $AWS_EB_APP
-  env: $AWS_EB_ENV
-  bucket_name: $AWS_S3_BUCKET_NAME
-
