@@ -5,7 +5,7 @@
   (:import (com.mchange.v2.c3p0 ComboPooledDataSource DataSources)))
 
 (def db-url (env :database-url))
-(def db-url-parts (rest (re-find #"(\w*)://(\w*):(\w*)@(\w*):(\w*)/(\w*)" db-url)))
+(def db-url-parts (rest (re-find #"(\w*)://(\w*):(\w*)@([a-zA-Z0-9_.-]*):(\w*)/(\w*)" db-url)))
 (def db-protocol (nth db-url-parts 0))
 (def db-username (nth db-url-parts 1))
 (def db-password (nth db-url-parts 2))
