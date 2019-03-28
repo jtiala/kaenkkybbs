@@ -9,15 +9,12 @@
    [forum.services.posts :as posts]
    [forum.migrations :as migrations :refer [migrate rollback]]))
 
-(def ^{:private true} config
-  (-> "config.edn" slurp read-string))
-
 (defn create-system
   "Constructs a system map."
   [dev-mode?]
   (component/system-map
-   :db (db/->Db (:db config) dev-mode?)
-   :http-server (server/create-server (:http-server config))
+   :db (db/->Db dev-mode?)
+   :http-server (server/create-server)
    :users (component/using
            (users/->Users)
            [:db :http-server])

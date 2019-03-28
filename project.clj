@@ -21,7 +21,10 @@
                  [org.clojure/clojurescript "1.10.520"]
                  [reagent "0.8.1"]
                  [cljs-ajax "0.8.0"]
-                 [clj-commons/secretary "1.2.4"]]
+                 [clj-commons/secretary "1.2.4"]
+                 [environ "1.1.0"]]
+
+  :plugins [[lein-environ "1.1.0"]]
 
   :source-paths ["src/clj" "src/cljc" "src/cljs"]
 
@@ -35,8 +38,12 @@
                                   [com.bhauman/figwheel-main "0.2.0"]
                                   [com.bhauman/rebel-readline-cljs "0.1.4"]]
                    :source-paths ["dev" "test/clj" "test/cljs"]
-                   :main user}
-             :test {:source-paths ["test/clj" "test/cljs"]}}
+                   :main user
+                   :env {:database-url "postgresql://localhost/kaenkkybbs?user=username&password=password"
+                         :http-port "8080"}}
+             :test {:source-paths ["test/clj" "test/cljs"]
+                    :env {:database-url "postgresql://localhost/kaenkkybbs?user=username&password=password"
+                          :http-port "8080"}}}
 
   :main forum.core
   :aot [forum.core])
