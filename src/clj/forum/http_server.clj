@@ -7,8 +7,7 @@
             [forum.transit-util :as transit]
             [environ.core :refer [env]]))
 
-(def port
-  (Integer/parseInt (env :port)))
+(def port (if (env :port) (Integer/parseInt (env :port)) 8080))
 
 (defprotocol HttpServices
   (publish-service [this f]))
