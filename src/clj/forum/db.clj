@@ -6,7 +6,9 @@
 
 (def db-url (env :database-url))
 (def db-url-parts (rest (re-find #"(\w*)://(\w*):(\w*)@([a-zA-Z0-9_.-]*):(\w*)/(\w*)" db-url)))
-(def db-protocol (nth db-url-parts 0))
+(def db-protocol
+  (let [part (nth db-url-parts 0)]
+    (if (= part "postgres") "postgresql" part)))
 (def db-username (nth db-url-parts 1))
 (def db-password (nth db-url-parts 2))
 (def db-host (nth db-url-parts 3))
