@@ -7,8 +7,8 @@
             [forum.transit-util :as transit]
             [environ.core :refer [env]]))
 
-(def http-port
-  (Integer/parseInt (env :http-port)))
+(def port
+  (Integer/parseInt (env :port)))
 
 (defprotocol HttpServices
   (publish-service [this f]))
@@ -26,7 +26,7 @@
                                 (empty? (:body response)) (assoc :body (transit/clj->transit (dissoc response :status :headers :body)))
                                 true (select-keys #{:status :headers :body}))
                               response)))
-                        {:port http-port})]
+                        {:port port})]
       (assoc this :stop-server stop-server)))
   (stop [{:keys [stop-server] :as this}]
     (stop-server)

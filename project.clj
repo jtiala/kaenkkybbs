@@ -40,10 +40,10 @@
                    :source-paths ["dev" "test/clj" "test/cljs"]
                    :main user
                    :env {:database-url "postgresql://localhost/kaenkkybbs?user=username&password=password"
-                         :http-port "8080"}}
+                         :port "8080"}}
              :test {:source-paths ["test/clj" "test/cljs"]
                     :env {:database-url "postgresql://localhost/kaenkkybbs?user=username&password=password"
-                          :http-port "8080"}}}
+                          :port "8080"}}}
 
   :main forum.core
   :aot [forum.core])
