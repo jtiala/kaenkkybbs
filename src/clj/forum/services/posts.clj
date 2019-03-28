@@ -24,8 +24,8 @@
 
 (defn create-post
   "Save a new post to the database."
-  [db message thread posted_by]
-  (let [user-id (if (= posted_by 0) nil posted_by)
+  [db message thread posted-by]
+  (let [user-id (if (= posted-by 0) nil posted-by)
         created-post (create-post-query<! db {:message message :thread thread :posted_by user-id})]
     (get-post db (:id created-post))))
 
@@ -47,8 +47,8 @@
     (publish-service server (POST "/api/posts" {body :body}
                               (let [{message :message
                                      thread :thread
-                                     posted_by :posted_by} (transit->clj body)]
-                                (create-post db message thread posted_by))))
+                                     posted-by :posted-by} (transit->clj body)]
+                                (create-post db message thread posted-by))))
     (publish-service server (DELETE "/api/posts/:id" [id :<< as-int]
                               (delete-post db id)))
     this)

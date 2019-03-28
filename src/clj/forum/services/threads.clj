@@ -27,7 +27,7 @@
 (defn create-thread
   "Save a new thread and a starting post to the database."
   [db title started_by message]
-  (let [user-id (if (= started_by 0) nil started_by)
+  (let [user-id (if (= started-by 0) nil started-by)
         created-thread (create-thread-query<! db {:title title :started_by user-id})]
     (create-post-query<! db {:message message :thread (:id created-thread) :posted_by user-id})
     (get-thread db (:id created-thread))))
@@ -49,9 +49,9 @@
                               (get-thread db id)))
     (publish-service server (POST "/api/threads" {body :body}
                               (let [{title :title
-                                     started_by :started_by
+                                     started-by :started-by
                                      message :message} (transit->clj body)]
-                                (create-thread db title started_by message))))
+                                (create-thread db title started-by message))))
     (publish-service server (DELETE "/api/threads/:id" [id :<< as-int]
                               (delete-thread db id)))
     this)
