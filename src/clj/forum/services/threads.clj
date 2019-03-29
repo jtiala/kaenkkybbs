@@ -26,7 +26,7 @@
 
 (defn create-thread
   "Save a new thread and a starting post to the database."
-  [db title started_by message]
+  [db title started-by message]
   (let [user-id (if (= started-by 0) nil started-by)
         created-thread (create-thread-query<! db {:title title :started_by user-id})]
     (create-post-query<! db {:message message :thread (:id created-thread) :posted_by user-id})
