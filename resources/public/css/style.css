@@ -167,6 +167,20 @@ button:disabled {
   font-size: 0.9rem;
 }
 
+#footer .links {
+  margin-top: 5px;
+  font-size: 0.8rem;
+}
+
+#footer a {
+  color: bisque;
+}
+
+#footer a:hover,
+#footer a:focus {
+  color: white;
+}
+
 /* HOME ROUTE */
 
 .thread-list {
