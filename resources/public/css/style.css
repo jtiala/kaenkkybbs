@@ -223,6 +223,7 @@ a.thread-item:focus {
   font-weight: normal;
   text-transform: none;
   margin: 10px 0 0 0;
+  word-wrap: anywhere;
 }
 
 .thread-item .message {
@@ -294,6 +295,7 @@ a.thread-item:focus {
   font-weight: normal;
   text-transform: none;
   margin: 10px 0 0 0;
+  word-wrap: anywhere;
 }
 
 .post-item .meta .started-by,
@@ -305,6 +307,7 @@ a.thread-item:focus {
 .post-item .message {
   font-size: 1rem;
   margin: 20px 0 0 0;
+  word-wrap: anywhere;
 }
 
 .no-responses {
