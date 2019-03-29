@@ -14,17 +14,13 @@ Does pineapple belong in pizza? Which kaenkkylae has the best majokaenkkys? Are 
 
 ## Development
 
-- Copy `config.edn.example` as `config.edn` and edit in your details
-
-      cp config.edn.example config.edn
-
 - Build and start database container
 
       docker-compose up
 
 - Start backend repl
 
-      lein repl
+      DATABASE_URL="postgresql://username:password@localhost:5432/kaenkkybbs" lein repl
 
 - Start figwheel
 
