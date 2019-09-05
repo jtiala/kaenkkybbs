@@ -1,0 +1,16 @@
+name: CI
+on: [pull_request]
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Install
+        run: lein deps
+      - name: Test
+        run: lein test
+      - name: Build
+        run: |
+          lein clean
+          lein fig:min
+          lein uberjar
