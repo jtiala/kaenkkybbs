@@ -1,6 +1,0 @@
-language: clojure
-env:
-  - DATABASE_URL="postgresql://username:password@localhost:5432/kaenkkybbs" PORT="8080"
-deploy:
-  provider: heroku
-  api_key: $HEROKU_API_KEY
