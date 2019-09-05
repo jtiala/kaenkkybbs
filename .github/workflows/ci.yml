@@ -8,8 +8,14 @@ jobs:
       - name: Install
         run: lein deps
       - name: Test
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          PORT: ${{ secrets.PORT }}
         run: lein test
       - name: Build
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          PORT: ${{ secrets.PORT }}
         run: |
           lein clean
           lein fig:min
